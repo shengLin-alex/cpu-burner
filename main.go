@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"runtime"
 	"time"
 )
@@ -9,7 +10,11 @@ func main() {
 
 	done := make(chan int)
 
-	for i := 0; i < runtime.NumCPU(); i++ {
+	numCPU := runtime.NumCPU()
+
+	fmt.Println(numCPU)
+
+	for i := 0; i < numCPU; i++ {
 		go func() {
 			for {
 				select {
